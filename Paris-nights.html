@@ -33,12 +33,14 @@
 
         #collage-container {
             position: absolute;
-            top: 40%; left: 50%;
+            top: 45%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 90vw;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2x2 grid looks better for 4 images */
-            grid-gap: 15px;
+            width: 95vw;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
             opacity: 0;
             transition: opacity 3s ease-in-out;
             z-index: 20;
@@ -46,18 +48,19 @@
         }
 
         .collage-img {
-            width: 100%;
+            width: 30%;
             aspect-ratio: 1/1;
-            border: 2.5px solid #fff;
-            border-radius: 10px;
+            border: 2px solid #fff;
+            border-radius: 8px;
             object-fit: cover;
             transform: rotate(var(--r));
             box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            background: #111;
         }
 
         #kiss-text {
             position: fixed;
-            bottom: 18%; 
+            bottom: 12%; 
             left: 0;
             width: 100%;
             text-align: center;
@@ -86,10 +89,11 @@
 </div>
 
 <div id="collage-container">
-    <img src="https://i.ibb.co/7FVpQzm/Screenshot-2025-12-31-23-45-57-037-com-miui-mediaviewer-edit.jpg" class="collage-img" style="--r: -4deg;">
-    <img src="https://i.ibb.co/0yCjn4b0/Screenshot-2025-12-31-23-46-15-745-com-miui-mediaviewer-edit.jpg" class="collage-img" style="--r: 5deg;">
-    <img src="https://i.ibb.co/b5bxmpzG/IMG-20251231-234529.jpg" class="collage-img" style="--r: -3deg;">
-    <img src="https://i.ibb.co/sdkvpTqy/Screenshot-2025-12-31-23-45-42-875-com-miui-mediaviewer-edit.jpg" class="collage-img" style="--r: 4deg;">
+    <img src="https://i.postimg.cc/nzYSG7qb/IMG-20251231-233613.jpg" class="collage-img" style="--r: -5deg;">
+    <img src="https://i.postimg.cc/k4FYv8WP/IMG-20251231-234529.jpg" class="collage-img" style="--r: 3deg;">
+    <img src="https://i.postimg.cc/bJjFnLDL/Screenshot_2025_12_31_23_45_42_875_com_miui_mediaviewer_edit.jpg" class="collage-img" style="--r: -2deg;">
+    <img src="https://i.postimg.cc/4db2QtVW/Screenshot_2025_12_31_23_45_57_037_com_miui_mediaviewer_edit.jpg" class="collage-img" style="--r: 6deg;">
+    <img src="https://i.postimg.cc/vBL2t9fJ/Screenshot_2025_12_31_23_46_15_745_com_miui_mediaviewer_edit.jpg" class="collage-img" style="--r: -4deg;">
 </div>
 <div id="kiss-text">💋 Happy New Year! 💋</div>
 
@@ -121,7 +125,7 @@
     controls.autoRotate = true;
     controls.autoRotateSpeed = 0.5;
 
-    // --- STARFIELD ---
+    // --- STARS ---
     const starGeo = new THREE.BufferGeometry();
     const starPos = new Float32Array(8000 * 3);
     for (let i = 0; i < 8000 * 3; i++) starPos[i] = (Math.random() - 0.5) * 1000;
@@ -148,7 +152,7 @@
             for (let x = 0; x < 256; x += 5) {
                 if (imgData[(y * 256 + x) * 4 + 3] > 128) {
                     pos.push((x - 128) * 0.1, (128 - y) * 0.1, 0);
-                    vels.push((Math.random()-0.5)*0.09, (Math.random()-0.5)*0.09, (Math.random()-0.5)*0.09);
+                    vels.push((Math.random()-0.5)*0.1, (Math.random()-0.5)*0.1, (Math.random()-0.5)*0.1);
                 }
             }
         }
